@@ -8,6 +8,8 @@ public class ContactDelitionTests extends TestBase {
   public void testContactDelition() {
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContacts();
+    app.getContactHelper().closeAlertWindow();
+    app.getContactHelper().returnToContactPage();
   }
 
 }
