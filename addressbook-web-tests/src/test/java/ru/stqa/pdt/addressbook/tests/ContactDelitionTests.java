@@ -10,6 +10,7 @@ public class ContactDelitionTests extends TestBase {
     app.getContactHelper().deleteSelectedContacts();
     app.getContactHelper().closeAlertWindow();
     app.getContactHelper().returnToContactPage();
+
   }
 
 }
