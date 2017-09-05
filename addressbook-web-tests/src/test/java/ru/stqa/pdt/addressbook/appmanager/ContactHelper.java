@@ -13,7 +13,7 @@ public class ContactHelper extends BaseHelper {
     super(wd);
   }
 
-  public void initContactCreation(){
+  public void initContactCreation() {
     click(By.linkText("add new"));
   }
 
@@ -30,7 +30,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("home"), contactData.getPhone());
     type(By.name("email"), contactData.getEmail());
     type(By.name("title"), contactData.getTitle());
-    if (creation){
+    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -61,5 +61,14 @@ public class ContactHelper extends BaseHelper {
     wd.switchTo().alert().accept();
   }
 
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitContactCreation();
+    returnToContactPage();
+  }
 
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
 }
