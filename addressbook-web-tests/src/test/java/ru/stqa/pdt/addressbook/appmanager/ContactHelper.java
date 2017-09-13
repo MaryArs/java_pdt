@@ -42,7 +42,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnToContactPage() {
-    if (isElementPresent(By.id("maintable"))){
+    if (isElementPresent(By.id("maintable"))) {
       return;
     }
     click(By.linkText("home"));
@@ -82,11 +82,12 @@ public class ContactHelper extends BaseHelper {
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element: elements){
+    for (WebElement element : elements) {
       List<WebElement> cells = wd.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-      ContactData contact = new ContactData(firstname, null, lastname, null, null, null, null,null, null);
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      ContactData contact = new ContactData(id, firstname, null, lastname, null, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;
