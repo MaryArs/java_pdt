@@ -11,16 +11,13 @@ public class ContactCreationsTests extends TestBase {
 
   @Test
   public void testContactCreation() {
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact = new ContactData("Marina", "Viktorovna", "Arsitova", "AnchorFree", "135 Easy street, apt.12", "650-768-45-66", "mary@gmail.com", "Software Engineer", "test1");
-    app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillContactForm(contact, true);
-    app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToContactPage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.goTo().gotoHomePage();
+    List<ContactData> before = app.contact().list();
+    ContactData contact = new ContactData().withFirstname("Marina").withMiddlename("Viktorovna").withLastname("Arsitova").withCompany("Anchor").withAddress("135 Easy street, apt.12").withPhone("650-768-45-66").withEmail("mary@gmail.com").withTitle("Software Engineer").withGroup("test1");
+    app.contact().create(contact);
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
-    contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    contact.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(contact);
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
     before.sort(byId);

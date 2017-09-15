@@ -63,8 +63,29 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
+  public void modify(ContactData contact) {
+    initContactModification();
+    fillContactForm(contact, false);
+    submitContactModification();
+    returnToContactPage();
+  }
+
+  public void create(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitContactCreation();
+    returnToContactPage();
+  }
+
   public void closeAlertWindow() {
     wd.switchTo().alert().accept();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContacts();
+    closeAlertWindow();
+    returnToContactPage();
   }
 
   public void createContact(ContactData contact) {
@@ -78,7 +99,7 @@ public class ContactHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
@@ -86,7 +107,7 @@ public class ContactHelper extends BaseHelper {
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstname, null, lastname, null, null, null, null, null, null);
+      ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname);
       contacts.add(contact);
     }
     return contacts;
