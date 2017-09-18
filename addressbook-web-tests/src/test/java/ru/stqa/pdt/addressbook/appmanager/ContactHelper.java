@@ -59,7 +59,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactModification(int id) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr["+ (id + 1) +"]/td[8]/a/img"));
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
   }
 
   public void submitContactModification() {
@@ -110,8 +110,7 @@ public class ContactHelper extends BaseHelper {
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
   }
