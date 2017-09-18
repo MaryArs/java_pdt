@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pdt.addressbook.model.ContactData;
+import ru.stqa.pdt.addressbook.model.Contacts;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -57,7 +59,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactModification(int id) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr["+ (id + 1) +"/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr["+ (id + 1) +"]/td[8]/a/img"));
   }
 
   public void submitContactModification() {
@@ -100,8 +102,8 @@ public class ContactHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public Set<ContactData> all() {
-    Set<ContactData> contacts = new HashSet<ContactData>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = wd.findElements(By.tagName("td"));
