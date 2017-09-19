@@ -59,8 +59,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactModification(int id) {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr["+ (id + 1) +"]/td[8]/a/img")).click();
-            //By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
   public void submitContactModification() {
