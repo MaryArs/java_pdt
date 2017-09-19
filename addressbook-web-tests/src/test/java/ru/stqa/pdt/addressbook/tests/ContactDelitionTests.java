@@ -13,8 +13,8 @@ public class ContactDelitionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().gotoHomePage();
-    if (app.contact().isThereAContact()) {
-      app.contact().createContact(new ContactData().withFirstname("Marina").withMiddlename("Viktorovna").withLastname("Arsitova").withCompany("AnchorFree").withAddress("135 Easy street, apt.12").withPhone("650-768-45-66").withEmail("mary.arsitova@gmail.com").withTitle("Software Engineer").withGroup("Test1"));
+    if (!app.contact().isThereAContact()) {
+      app.contact().createContact(new ContactData().withFirstname("Marina").withMiddlename("Viktorovna").withLastname("Arsitova").withCompany("AnchorFree").withAddress("135 Easy street, apt.12").withHomePhone("650-768-45-66").withEmail("mary.arsitova@gmail.com").withTitle("Software Engineer").withGroup("test1"));
     }
   }
 
