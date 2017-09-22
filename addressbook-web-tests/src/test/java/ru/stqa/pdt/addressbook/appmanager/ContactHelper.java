@@ -36,6 +36,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getEmail());
     type(By.name("title"), contactData.getTitle());
+    attach(By.name("photo"), contactData.getPhoto());
+
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
@@ -119,7 +121,7 @@ public class ContactHelper extends BaseHelper {
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allphones = cells.get(5).getText();
-      String  address = cells.get(3).getText();
+      String address = cells.get(3).getText();
       String allEmails = cells.get(4).getText();
       contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
               .withAllPhones(allphones).withAddress(address).withAllEmailes(allEmails));
@@ -128,7 +130,6 @@ public class ContactHelper extends BaseHelper {
   }
 
   public ContactData infoFromEditForm(ContactData contact) {
-
     initContactModification(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");

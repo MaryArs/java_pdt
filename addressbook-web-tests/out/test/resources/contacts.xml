@@ -1,0 +1,41 @@
+<list>
+  <contact>
+    <firstname>Петя 0</firstname>
+    <lastname>Иванов 0</lastname>
+    <company>eBay</company>
+    <address>119 Easy street, apt.12 0</address>
+    <work>3464562</work>
+    <email>dff@gmail.com</email>
+    <email2>gbvg@yandex.ru</email2>
+    <email3>lkj34@hh</email3>
+    <group>test1</group>
+    <phone>34 65 12</phone>
+    <mobile>(668)87-77-66</mobile>
+  </contact>
+  <contact>
+    <firstname>Петя 1</firstname>
+    <lastname>Иванов 1</lastname>
+    <company>eBay</company>
+    <address>119 Easy street, apt.12 1</address>
+    <work>3464562</work>
+    <email>dff@gmail.com</email>
+    <email2>gbvg@yandex.ru</email2>
+    <email3>lkj34@hh</email3>
+    <group>test1</group>
+    <phone>34 65 12</phone>
+    <mobile>(668)87-77-66</mobile>
+  </contact>
+  <contact>
+    <firstname>Петя 2</firstname>
+    <lastname>Иванов 2</lastname>
+    <company>eBay</company>
+    <address>119 Easy street, apt.12 2</address>
+    <work>3464562</work>
+    <email>dff@gmail.com</email>
+    <email2>gbvg@yandex.ru</email2>
+    <email3>lkj34@hh</email3>
+    <group>test1</group>
+    <phone>34 65 12</phone>
+    <mobile>(668)87-77-66</mobile>
+  </contact>
+</list>
