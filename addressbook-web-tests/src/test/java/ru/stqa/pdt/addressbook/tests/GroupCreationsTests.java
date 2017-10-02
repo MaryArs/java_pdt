@@ -37,7 +37,7 @@ public class GroupCreationsTests extends TestBase {
 
   @Test(dataProvider = "validGroups")
   public void testGroupCreation(GroupData group) {
-    app.goTo().groupPage();
+    app.goTo().gotoGroupPage();
     Groups before = app.db().groups();
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size() + 1));
@@ -48,7 +48,7 @@ public class GroupCreationsTests extends TestBase {
 
   @Test
   public void testBadGroupCreation() {
-    app.goTo().groupPage();
+    app.goTo().gotoGroupPage();
     Groups before = app.db().groups();
     GroupData group = new GroupData().withName("test'");
     app.group().create(group);
