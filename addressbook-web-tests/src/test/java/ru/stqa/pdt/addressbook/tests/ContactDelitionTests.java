@@ -20,10 +20,11 @@ public class ContactDelitionTests extends TestBase {
 
   @Test
   public void testContactDelition() {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
+    app.goTo().gotoHomePage();
     app.contact().delete(deletedContact);
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size() - 1);
     assertThat(after, equalTo(before.withoutAdded(deletedContact)));
   }
