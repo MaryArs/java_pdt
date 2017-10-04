@@ -12,7 +12,7 @@ import ru.stqa.pdt.addressbook.model.GroupData;
 
 import java.util.List;
 
-public class HbConnectionTestForContacts {
+public class HbConnectionTest {
 
   private SessionFactory sessionFactory;
 
@@ -33,14 +33,27 @@ public class HbConnectionTestForContacts {
   }
 
   @Test
-  public void testHbConnection() {
+  public void testHbConnectionGroups() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'").list();
-    for (ContactData contact : result) {
-      System.out.println(contact);
+    List<GroupData> result = session.createQuery( "from GroupData").list();
+    for (GroupData group : result) {
+      System.out.println(group);
     }
     session.getTransaction().commit();
     session.close();
+  }
+
+  @Test
+  public void testHbConnectionContacts() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'").list();
+    session.getTransaction().commit();
+    session.close();
+    for (ContactData contact : result) {
+      System.out.println(contact);
+      System.out.println(contact.getGroups());
+    }
   }
 }

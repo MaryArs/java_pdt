@@ -14,7 +14,7 @@ public class ContactDelitionTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().gotoHomePage();
     if (!app.contact().isThereAContact()) {
-      app.contact().createContact(new ContactData().withFirstname("Marina").withMiddlename("Viktorovna").withLastname("Arsitova").withCompany("AnchorFree").withAddress("135 Easy street, apt.12").withHomePhone("650-768-45-66").withEmail("mary.arsitova@gmail.com").withTitle("Software Engineer").withGroup("test1"));
+      app.contact().createContact(new ContactData().withFirstname("Marina").withMiddlename("Viktorovna").withLastname("Arsitova").withCompany("AnchorFree").withAddress("135 Easy street, apt.12").withHomePhone("650-768-45-66").withEmail("mary.arsitova@gmail.com").withTitle("Software Engineer"));
     }
   }
 
@@ -27,5 +27,6 @@ public class ContactDelitionTests extends TestBase {
     Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size() - 1);
     assertThat(after, equalTo(before.withoutAdded(deletedContact)));
+    verifyContactListInUI();
   }
 }

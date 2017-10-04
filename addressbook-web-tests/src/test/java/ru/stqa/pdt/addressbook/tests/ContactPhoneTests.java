@@ -17,7 +17,7 @@ public class ContactPhoneTests extends TestBase{
       app.contact().createContact(new ContactData().withFirstname("Marina").withMiddlename("Viktorovna").withLastname("Arsitova").withCompany("AnchorFree")
               .withAddress("135 Easy street, apt.12")
               .withHomePhone("650-768-45-66").withMobilePhone("+7 850").withWorkPhone("12 23 45")
-              .withEmail("mary.arsitova@gmail.com").withTitle("Software Engineer").withGroup("test1").withEmail("dfd@yandex.ru").withEmail2("gtg ght").withEmail3("33@gmail.com"));
+              .withEmail("mary.arsitova@gmail.com").withTitle("Software Engineer").withEmail("dfd@yandex.ru").withEmail2("gtg ght").withEmail3("33@gmail.com"));
     }
   }
 
