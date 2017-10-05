@@ -106,8 +106,6 @@ public class ContactData {
     return new Groups(groups);
   }
 
-
-
   public File getPhoto() {
     return new File(photo);
   }

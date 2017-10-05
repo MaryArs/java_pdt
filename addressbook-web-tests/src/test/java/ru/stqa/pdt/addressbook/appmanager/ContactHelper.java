@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pdt.addressbook.model.ContactData;
 import ru.stqa.pdt.addressbook.model.Contacts;
+import ru.stqa.pdt.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -147,5 +148,13 @@ public class ContactHelper extends BaseHelper {
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
             .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
+  }
+
+  public void selectGroup(GroupData groups) {
+       new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(groups.getName());
+  }
+
+  public void addtoGroup() {
+    click(By.name("add"));
   }
 }
