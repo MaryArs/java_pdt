@@ -42,3 +42,4 @@ public class Issue {
     return this;
   }
 }
+
