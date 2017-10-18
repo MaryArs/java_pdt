@@ -50,4 +50,10 @@ public class SoapHelper {
             .getMantisConnectPort(new URL("http://localhost/mantisbt-2.6.0/api/soap/mantisconnect.php"));
   }
 
+  public IssueData getIssuebyId(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    return mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
+
+  }
+
 }
