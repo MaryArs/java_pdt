@@ -19,7 +19,7 @@ public class TestBase {
 
   public boolean isIssueOpen(int issueId) throws IOException {
     String status = getStatusById(issueId);
-    if(status.equals("Closed") || status.equals("Resolved")) {
+    if(status.equals("Resolved")) {
       return false;
     } else
       return true;
@@ -38,5 +38,4 @@ public class TestBase {
     Set<Issue> issue =  new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
     return issue.iterator().next().getStatus();
   }
-
 }
